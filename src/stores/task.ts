@@ -16,6 +16,10 @@ export const useCounterStore = defineStore({
   getters: {},
   actions: {
     async addTask(message: string) {
+      if (message == "") {
+        return false;
+      }
+
       const Arr = getDb();
       const Task = { id: shortid(), name: message };
 
@@ -32,6 +36,11 @@ export const useCounterStore = defineStore({
       await setDb(newDb);
 
       return (this.list = newDb);
+    },
+    async removeAll() {
+      await setDb([]);
+
+      return (this.list = []);
     },
   },
 });

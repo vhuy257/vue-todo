@@ -3,10 +3,7 @@
 .about {
     @media (min-width: 1024px) {
         min-height: 100vh;
-        display: flex;
-        align-items: flex-start;
-        flex-direction: column;
-        justify-content: center;
+        @include flex-container($align: flex-start, $dir: column, $justify: center);
     }
 
     .create--task-section {
@@ -14,12 +11,17 @@
         align-items: center;
 
         button {
-            height: 80px;
-            background: none;
-            border: 3px solid var(--button-main-background-color-hover);
+            &.delete-all {                
+                @include flex-container($align: center, $dir: row);
 
-            &:hover {
-                background-color: var(--button-main-background-color);
+                span {
+                    margin-right: 10px;
+                    font-weight: 500;
+                }
+
+                &:hover {
+                    background: none;
+                }
             }
         }
 
@@ -29,19 +31,18 @@
         }
     }
 
-    .create {
-        margin: 10px 0;
-        margin-left: 20px;
-    }
-
     ul {
         display: flex;
         flex-wrap: wrap;
 
         li {
-            margin: 10px 15px;
-
-            @include flex-container($align: flex-start, $dir: row, $justify: flex-start, $wrap: wrap);
+            margin-right: 10px;
+            margin-bottom: 10px;
+            
+            @include flex-container($align: center, $dir: row, $justify: flex-start, $wrap: wrap);
+            .task--text {
+                margin-right: 10px;
+            }
         }
     }
 }

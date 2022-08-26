@@ -1,10 +1,10 @@
-@mixin flex-container($align, $dir, $justify, $wrap) {
+@mixin flex-container($align: center, $dir: row, $justify: space-between, $wrap: wrap) {
     display: flex;
     display: -webkit-flex;
     display: -moz-flex;
     display: -ms-flex;
-    justify-content: $justify;
-    align-items: $align;
-    flex-direction: $dir;
-    flex-wrap: $wrap;
+    justify-content: unquote($justify);
+    align-items: unquote($align);
+    flex-direction: unquote($dir);
+    flex-wrap: unquote($wrap);
 }

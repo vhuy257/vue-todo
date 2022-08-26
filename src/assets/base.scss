@@ -106,7 +106,7 @@ li {
 
 button {
   padding: 8px;
-  width: 80px;
+  min-width: 80px;
   border: none;
   background: var(--button-main-background-color);
   color: #fff;
@@ -114,6 +114,7 @@ button {
   display: inline-block;
   cursor: pointer;
   line-height: 20px;
+  font-weight: 500;
   transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
 
   &:hover {
@@ -138,5 +139,19 @@ button {
 
   &.rounded-full {
     border-radius: 100%;    
+  }
+
+  &.image {
+    background: none;
+    border: none;
+  }
+
+  &.blue-lighter {
+    background-color: var(--color-blue-lighter);
+  }
+  
+  &.outline {
+    background: none;
+    border: 2px solid var(--button-main-background-color);
   }
 }
