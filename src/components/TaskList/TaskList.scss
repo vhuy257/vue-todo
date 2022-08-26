@@ -1,0 +1,47 @@
+@import "../../assets/mixins.scss";
+
+.about {
+    @media (min-width: 1024px) {
+        min-height: 100vh;
+        display: flex;
+        align-items: flex-start;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .create--task-section {
+        display: flex;
+        align-items: center;
+
+        button {
+            height: 80px;
+            background: none;
+            border: 3px solid var(--button-main-background-color-hover);
+
+            &:hover {
+                background-color: var(--button-main-background-color);
+            }
+        }
+
+        input {
+            border: 2px solid var(--button-main-background-color-hover);
+            border-radius: 0;
+        }
+    }
+
+    .create {
+        margin: 10px 0;
+        margin-left: 20px;
+    }
+
+    ul {
+        display: flex;
+        flex-wrap: wrap;
+
+        li {
+            margin: 10px 15px;
+
+            @include flex-container($align: flex-start, $dir: row, $justify: flex-start, $wrap: wrap);
+        }
+    }
+}

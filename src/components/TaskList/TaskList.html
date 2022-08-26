@@ -1,0 +1,19 @@
+<div class="about">    
+    <p>Message is: {{ counter.message }}</p>
+    <div class="create--task-section">
+        <input v-model="counter.message" placeholder="Add new task" />
+        <button @click="counter.addTask(counter.message)" class="create rounded-full">
+          <img src="@/assets/images/reindeer.png" width="40" height="40"/>
+        </button>
+        <button @click="counter.removeAll" class="remove rounded">
+            Remove all
+        </button>
+    </div>
+    
+    <ul>
+      <li v-for="item in counter.list" :key="item.id">
+        {{ item.name }}
+        <button @click="counter.deleteTask(item.id)" class="rounded delete">Delete</button>
+      </li>
+    </ul>
+</div>
