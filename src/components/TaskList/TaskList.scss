@@ -7,12 +7,11 @@
     }
 
     .create--task-section {
-        display: flex;
-        align-items: center;
-
+        @include flex-container($align: stretch);
+        margin-bottom: 40px;
         button {
             &.delete-all {                
-                @include flex-container($align: center, $dir: row);
+                @include flex-container($align: center, $dir: row);            
 
                 span {
                     margin-right: 10px;
@@ -27,7 +26,7 @@
 
         input {
             border: 2px solid var(--button-main-background-color-hover);
-            border-radius: 0;
+            border-radius: 0;      
         }
     }
 

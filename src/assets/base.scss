@@ -2,7 +2,7 @@
 :root {
   --font-base: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
   Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-  --font-custom: 'Noto Sans', serif;
+  --font-custom: 'Inter', sans-serif;
 
   --vt-c-white: #ffffff;
   --vt-c-white-soft: #f8f8f8;
@@ -33,7 +33,7 @@
   --button-main-background-color-hover: #2B4865;
 
   --font-m: 14px;
-  --font-l: 1.6rem;
+  --font-l: 16px;
 }
 
 /* semantic color variables for this project */
@@ -81,8 +81,8 @@ body {
   transition: color 0.5s, background-color 0.5s;
   line-height: 1.6;
   font-family: var(--font-custom);
-  font-weight: 200;
-  font-size: 17px;
+  font-weight: 400;  
+  font-size: var(--font-l);
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -92,6 +92,8 @@ input {
   border: 1px solid var(--vt-c-divider-dark-2);
   padding: 10px;
   border-radius: 3px;
+  font-size: var(--font-l);
+  font-family: var(--font-custom);
 }
 
 input:focus {
@@ -105,16 +107,17 @@ li {
 }
 
 button {
-  padding: 8px;
+  padding: 8px 12px;
   min-width: 80px;
   border: none;
   background: var(--button-main-background-color);
   color: #fff;
   font-family: var(--font-base);
   display: inline-block;
+  font-size: var(--font-l);
   cursor: pointer;
   line-height: 20px;
-  font-weight: 500;
+  font-weight: 400;
   transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
 
   &:hover {
@@ -122,15 +125,16 @@ button {
   }
 
   &.main {
-    width: 120px;
+    width: auto;
   }
 
   &.delete {
-    background: var(--color-red);
-
-    &:hover {
-      background-color: var(--color-orange);
-    }
+    background-color: transparent;    
+    background-image: url('./images/delete.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 20px;
+    min-width: auto;
   }
 
   &.rounded {
