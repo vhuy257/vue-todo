@@ -1,16 +1,17 @@
 <div class="about">  
     <div class="create--task-section">
-        <input v-model="counter.message" placeholder="Add new task" />
+        <input v-model="counter.message" placeholder="Add New Task" />
         <button @click="counter.addTask(counter.message)" class="create main">
           Create new task
-        </button>       
+        </button>         
     </div>  
     <ul>
       <li v-for="item in counter.list" :key="item.id">
         <span class="task--text">{{ item.name }}</span>
-        <button @click="counter.deleteTask(item.id)" class="rounded delete">
-          
-        </button>
+        <button @click="counter.deleteTask(item.id)" class="delete"></button>
       </li>
     </ul>
+    <button @click="counter.removeAll()" class="outline">
+      Delete All Task
+    </button>  
 </div>

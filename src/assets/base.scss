@@ -81,7 +81,7 @@ body {
   transition: color 0.5s, background-color 0.5s;
   line-height: 1.6;
   font-family: var(--font-custom);
-  font-weight: 400;  
+  font-weight: 300;  
   font-size: var(--font-l);
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -92,7 +92,7 @@ input {
   border: 1px solid var(--vt-c-divider-dark-2);
   padding: 10px;
   border-radius: 3px;
-  font-size: var(--font-l);
+  font-size: var(--font-m);
   font-family: var(--font-custom);
 }
 
@@ -108,33 +108,26 @@ li {
 
 button {
   padding: 8px 12px;
-  min-width: 80px;
   border: none;
-  background: var(--button-main-background-color);
-  color: #fff;
+  background-color: transparent;
   font-family: var(--font-base);
+  text-transform: capitalize;
   display: inline-block;
-  font-size: var(--font-l);
+  font-size: var(--font-m);
   cursor: pointer;
   line-height: 20px;
   font-weight: 400;
   transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
 
-  &:hover {
-    background: var(--button-main-background-color-hover);
-  }
-
   &.main {
     width: auto;
-  }
+    background: var(--button-main-background-color);
+    color: #fff;
+    min-width: 80px;
 
-  &.delete {
-    background-color: transparent;    
-    background-image: url('./images/delete.svg');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 20px;
-    min-width: auto;
+    &:hover {
+      background: var(--button-main-background-color-hover);
+    }
   }
 
   &.rounded {
@@ -145,17 +138,9 @@ button {
     border-radius: 100%;    
   }
 
-  &.image {
-    background: none;
-    border: none;
-  }
-
-  &.blue-lighter {
-    background-color: var(--color-blue-lighter);
-  }
-  
   &.outline {
     background: none;
+    color: var(--vt-c-black);
     border: 2px solid var(--button-main-background-color);
   }
 }

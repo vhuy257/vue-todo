@@ -9,20 +9,6 @@
     .create--task-section {
         @include flex-container($align: stretch);
         margin-bottom: 40px;
-        button {
-            &.delete-all {                
-                @include flex-container($align: center, $dir: row);            
-
-                span {
-                    margin-right: 10px;
-                    font-weight: 500;
-                }
-
-                &:hover {
-                    background: none;
-                }
-            }
-        }
 
         input {
             border: 2px solid var(--button-main-background-color-hover);
@@ -35,10 +21,26 @@
         flex-wrap: wrap;
 
         li {
-            margin-right: 10px;
-            margin-bottom: 10px;
+            margin-right: 20px;
+            margin-bottom: 20px;
             
             @include flex-container($align: center, $dir: row, $justify: flex-start, $wrap: wrap);
+            position: relative;
+            background-color: var(--vt-c-white-soft);
+            padding: 5px 10px;
+
+            .delete {
+                position: absolute;
+                right: -10px;
+                top: -10px;
+                background-color: transparent;    
+                background-image: url('../../assets/images/delete-svgrepo-com.svg');
+                background-repeat: no-repeat;
+                background-position: center;
+                background-size: contain;
+                min-width: auto;
+            }
+
             .task--text {
                 margin-right: 10px;
             }
