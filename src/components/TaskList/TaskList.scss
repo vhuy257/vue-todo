@@ -24,13 +24,16 @@
         flex-wrap: wrap;
 
         li {
+            @include flex-container($align: flex-start, $dir: row, $justify: flex-start, $wrap: wrap);
+
             margin-right: 20px;
             margin-bottom: 20px;
-            
-            @include flex-container($align: center, $dir: row, $justify: flex-start, $wrap: wrap);
+            width: 200px;
             position: relative;
             background-color: var(--vt-c-white-soft);
             padding: 5px 10px;
+            border-radius: 5px;
+            box-shadow: 0px 1px 2px 0px #adacac;
 
             .delete {
                 position: absolute;
@@ -46,6 +49,8 @@
 
             .task--text {
                 margin-right: 10px;
+                width: 100%;
+                margin-top: 5px;
             }
         }
     }

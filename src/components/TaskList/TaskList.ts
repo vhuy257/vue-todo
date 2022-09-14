@@ -1,9 +1,10 @@
-import { useCounterStore } from "@/stores/task";
+import { useCounterStore } from '@/stores/task';
 
 export default {
-  setup() {
-    const counter = useCounterStore();
+    setup() {
+        const task = useCounterStore();
+        task.getListProduct();
 
-    return { counter };
-  },
+        return { task };
+    }
 };
