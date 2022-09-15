@@ -1,0 +1,119 @@
+@import "../../assets/mixins.scss";
+
+.about {
+    max-width: 1440px;
+    margin: 0 auto;
+    
+    @media (min-width: 1024px) {
+        min-height: 100vh;
+        @include flex-container($align: center, $dir: column, $justify: center);
+    }
+
+    .create--task-section {
+        @include flex-container($align: stretch);
+        margin-bottom: 40px;
+
+        input {
+            border: 2px solid var(--button-main-background-color-hover);
+            border-radius: 0;      
+        }
+    }
+
+    ul {
+        display: grid;
+        grid-template-columns: auto auto auto auto;
+        gap: 20px;
+
+        .item--wrapper {
+            @include flex-container($align: center, $dir: column, $justify: flex-start, $wrap: wrap);
+                 
+            position: relative;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0px 1px 2px 0px #adacac;
+            
+            &-image {
+                margin-bottom: 15px;
+                width: 100%;
+
+                img {
+                    min-height: 150px;
+                    max-height: 150px;
+                    margin: 0 auto;
+                    width: auto;
+                }
+            }
+
+            &-content {
+                margin: 5px 0;
+                width: 100%;
+
+                &__price {
+                    color: var(--color-red);
+                }
+
+                &__brand {
+                    font-size: 12px;
+                    border-radius: 3px;
+                    color: #fff;
+                    padding: 2px 10px;
+                    margin-top: 15px;
+                    display: inline-block;
+                    background-color: var(--button-main-background-color-hover);
+                }
+
+                &__description {
+                    color: var(--vt-c-divider-dark-1);
+                    font-size: var(--font-m);
+                    margin-bottom: 15px;
+                }
+
+                &__action {
+                    @include flex-container($align: flex-start, $dir: row, $justify: flex-start, $wrap: wrap);
+
+                    margin-top: auto;
+                    text-align: left;
+                    width: 100%;
+
+                    &-addtocart {                    
+                        @include flex-container($align: center);
+
+                        border-radius: 3px;                        
+                        font-weight: 400;
+                        font-size: 14px;
+                        padding: 3px 8px;
+                        border: 1px solid var(--button-main-background-color-hover);
+
+                        &::after {
+                            content: '';
+                            background-image: url('../../assets/images/cart-add-svgrepo-com.svg');
+                            display: inline-block;
+                            vertical-align: middle;
+                            width: 24px;
+                            height: 24px;
+                            margin-left: 5px;
+                        }
+
+                        &:hover {
+                            background-color: var(--background-green);
+                            border-color: var(--background-green);
+                            color: #fff;
+
+                            &::after {
+                                content: '';
+                                background-image: url('../../assets/images/cart-add-svgrepo-com-white.svg');
+                            }
+                        }
+                    }
+                }
+
+                &__product-name {
+                    display: block;
+                    text-decoration: none;
+                    color: var(--vt-c-black-soft);
+                }
+            }   
+            
+        }
+    }
+}

@@ -127,7 +127,7 @@ button {
   cursor: pointer;
   line-height: 20px;
   font-weight: 400;
-  transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
+  transition: all .2s cubic-bezier(0.19, 1, 0.22, 1);
 
   &.main {
     width: auto;

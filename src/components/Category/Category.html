@@ -1,0 +1,25 @@
+<div class="about">  
+    <div class="about--loading" v-if="list.isLoading">
+      Loading...
+    </div>
+    <ul v-if="!list.isLoading">
+      <li v-for="item in list.list.products" :key="item.id" class="item--wrapper">    
+        <div class="item--wrapper-image">
+          <img v-bind:src="item.thumbnail" width="250" class="rounded"/>      
+          <span class="item--wrapper-content__brand">{{ item.brand }}</span>
+        </div>
+        <div class="item--wrapper-content">
+          <a :href="'/product/' + item.id" class="item--wrapper-content__product-name">{{ item.title }}</a>        
+          <span class="item--wrapper-content__price">{{ item.price }}$</span>
+          <div class="item--wrapper-content__description">
+              {{ item.description }}
+          </div>
+        </div>
+        <div class="item--wrapper-content__action">
+          <button class="item--wrapper-content__action-addtocart">
+            Add to Cart
+          </button>
+        </div>
+      </li>
+    </ul>
+</div>
