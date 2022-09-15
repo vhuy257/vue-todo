@@ -14,7 +14,6 @@ export const useCounterStore = defineStore({
         isLoading: true as boolean,
         list: [] as Task[]
     }),
-    getters: {},
     actions: {
         async getListProduct() {
             const { data } = await getList();
