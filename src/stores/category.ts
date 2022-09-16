@@ -1,24 +1,38 @@
 import { defineStore } from 'pinia';
-import { getList } from '@/service/getFakeProduct';
+import {
+    getList,
+    getDetailProduct,
+    getProductByCategory
+} from '@/service/getFakeProduct';
 
-export interface Task {
+export interface Product {
     id?: string;
-    name?: string;
-    image?: string[];
+    title?: string;
+    category?: string;
+    images?: string[];
 }
 
 export const useCounterStore = defineStore({
-    id: 'task',
+    id: 'category',
     state: () => ({
         message: '' as string,
         isLoading: true as boolean,
-        list: [] as Task[]
+        product: {} as Product,
+        productByCategory: [] as Product[],
+        list: [] as Product[]
     }),
     actions: {
         async getListProduct() {
-            const { data } = await getList();
+            const { data } = await getList(16, 15);
             this.isLoading = false;
             this.list = data;
+        },
+        async getProduct(productId: string) {
+            const { data } = await getDetailProduct(productId);
+            this.product = data;
+            const category = this.product.category as string;
+            const dataRes = await getProductByCategory(category);
+            this.productByCategory = dataRes.data;
         }
     }
 });

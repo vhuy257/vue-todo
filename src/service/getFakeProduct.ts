@@ -1,9 +1,18 @@
 import axios from 'axios';
 
-export const getList = () => {
-    return axios.get('https://dummyjson.com/products?limit=16');
+export const getList = (limit: number, skip: number) => {
+    return axios.get(`
+    https://dummyjson.com/products?limit=${limit || 12}&skip=${skip || 0}`);
 };
 
 export const getDetailProduct = (productId: string) => {
     return axios.get('https://dummyjson.com/products/' + productId);
+};
+
+export const getProductByCategory = (category: string) => {
+    return axios.get('https://dummyjson.com/products/category/' + category);
+};
+
+export const searchProduct = (productName: string) => {
+    return axios.get('https://dummyjson.com/products/search?q=' + productName);
 };

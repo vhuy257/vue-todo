@@ -48,6 +48,10 @@ nav a {
     color: var(--vt-c-text-light-2);
 }
 
+nav a:first-child {
+    padding-left: 0;
+}
+
 nav a:first-of-type {
     border: 0;
 }

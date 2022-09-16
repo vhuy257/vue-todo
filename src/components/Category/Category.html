@@ -5,7 +5,9 @@
     <ul v-if="!list.isLoading">
       <li v-for="item in list.list.products" :key="item.id" class="item--wrapper">    
         <div class="item--wrapper-image">
-          <img v-bind:src="item.thumbnail" width="250" class="rounded"/>      
+          <a :href="'/product/' + item.id" class="item--wrapper-content__product-name">
+            <img v-bind:src="item.thumbnail" width="250" class="rounded"/>    
+          </a>  
           <span class="item--wrapper-content__brand">{{ item.brand }}</span>
         </div>
         <div class="item--wrapper-content">
