@@ -84,13 +84,17 @@ export default {
                 >
                     <div class="carousel__item">
                         <div class="carousel__item-image">
-                            <img :src="slide.thumbnail" />
+                            <a :href="'/product/' + slide.id">
+                                <img :src="slide.thumbnail" />
+                            </a>
+                        </div>
+                        <div class="carousel__item-productname">
+                            <a :href="'/product/' + slide.id">
+                                {{ slide.title }}
+                            </a>
                         </div>
                         <div class="carousel__item-productprice">
                             <small>${{ slide.price }}</small>
-                        </div>
-                        <div class="carousel__item-productname">
-                            {{ slide.title }}
                         </div>
                     </div>
                 </slide>
@@ -222,6 +226,18 @@ export default {
         &-productname {
             font-size: var(--font-l);
             margin-top: auto;
+            a {
+                white-space: nowrap;
+                overflow: hidden;
+                display: block;
+                text-overflow: ellipsis;
+                -webkit-line-clamp: 1;
+                text-decoration: none;
+                color: var(--vt-c-text-dark);
+            }
+        }
+        &-productprice {
+            color: var(--color-red);
         }
     }
 }
