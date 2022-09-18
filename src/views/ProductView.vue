@@ -102,6 +102,30 @@ export default {
                         </a>
                     </li>
                 </ul>
+                <div class="product--detail-content__service_payment-methods">
+                    <h4>Accept payment methods</h4>
+                    <ul>
+                        <li>
+                            <img
+                                src="../assets/images/paypal.svg"
+                                width="45"
+                                height="45"
+                            />
+                        </li>
+                        <li>
+                            <img
+                                src="../assets/images/visa-credit-card.svg"
+                                width="30"
+                            />
+                        </li>
+                        <li>
+                            <img
+                                src="../assets/images/mastercard.svg"
+                                width="30"
+                            />
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
@@ -244,14 +268,32 @@ export default {
         }
         &__service {
             margin-top: 15px;
+            @include flex-container($align: flex-start);
             li {
                 margin: 10px 0;
                 a {
-                    @include flex-container($align: center, $justify: flex-start);
+                    @include flex-container(
+                        $align: center,
+                        $justify: flex-start
+                    );
                     font-size: var(--font-m);
                     color: var(--vt-c-text-dark);
                     img {
                         margin-right: 10px;
+                    }
+                }
+            }
+            &_payment-methods {
+                h4 {
+                    font-size: var(--font-m);
+                    font-weight: 500;
+                    margin-top: 10px;
+                    text-decoration: underline;
+                }
+                ul {
+                    @include flex-container($align: center, $justify: flex-end);
+                    li {
+                        margin: 0 5px;
                     }
                 }
             }

@@ -3,7 +3,8 @@ import {
     getList,
     getDetailProduct,
     getProductByCategory,
-    getProductCategories
+    getProductCategories,
+    getAllCart
 } from '@/service/getFakeProduct';
 import { PRODUCT_PER_PAGE } from '@/config/config';
 
@@ -21,6 +22,7 @@ export const useCounterStore = defineStore({
         isLoading: true as boolean,
         product: {} as Product,
         totalPage: 0 as number,
+        classActiveCategory: '' as string,
         currentPageNumber: 1 as number,
         productByCategory: [] as Product[],
         list: [] as Product[],
@@ -64,6 +66,18 @@ export const useCounterStore = defineStore({
             const { data } = await getProductByCategory(categoryName);
             this.list = data;
             this.processPagination(data.total, this.currentPageNumber);
+        },
+        getProductEvent(categoryName: string) {
+            if (categoryName === 'All') {
+                this.getListProduct(1);
+            } else {
+                this.getProductByCategory(categoryName);
+            }
+            this.classActiveCategory = categoryName;
+        },
+        async getAllCart() {
+            const { data } = await getAllCart();
+            console.log(data);
         }
     }
 });

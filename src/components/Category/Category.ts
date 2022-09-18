@@ -6,21 +6,11 @@ export default {
         const list = useCounterStore();
         list.getListProduct(1);
         list.getAllCategories();
-        const activeCategory = '';
+        list.getAllCart();
 
         return {
-            list,
-            activeCategory
+            list
         };
-    },
-    methods: {
-        getProductByCategory(item: string) {
-            this.activeCategory = item;
-            if (item !== 'All') {
-                return this.list.getProductByCategory(item);
-            }
-            return this.list.getListProduct(1);
-        }
     },
     components: {
         PaginationComponent

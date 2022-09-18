@@ -20,3 +20,7 @@ export const getProductByCategory = (category: string) => {
 export const searchProduct = (productName: string) => {
     return axios.get('https://dummyjson.com/products/search?q=' + productName);
 };
+
+export const getAllCart = () => {
+    return axios.get('https://dummyjson.com/carts');
+};
