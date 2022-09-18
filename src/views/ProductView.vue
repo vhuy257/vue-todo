@@ -316,13 +316,7 @@ export default {
             font-size: var(--font-l);
             margin-top: auto;
             a {
-                white-space: nowrap;
-                overflow: hidden;
-                display: block;
-                width: 98%;
                 margin: 0 auto;
-                text-overflow: ellipsis;
-                -webkit-line-clamp: 1;
                 text-decoration: none;
                 color: var(--vt-c-text-dark);
             }

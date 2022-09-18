@@ -147,6 +147,23 @@
             font-size: 14px;
             padding: 0 7px;
             cursor: pointer;
+
+            &--all {
+                background-color: var(--background-green);
+                border-radius: 3px;
+                font-size: 14px;
+                padding: 0 7px;
+                color: #fff;
+                cursor: pointer;
+
+                &.active {
+                    background-color: var(--color-red);
+                }
+            }
+
+            &.active {
+                background-color: var(--color-red);
+            }
         }
     }
 }

@@ -12,7 +12,7 @@ export default {
 };
 </script>
 <template>
-    <div class="pagination">
+    <div class="pagination" v-if="list.totalPage">
         <button
             class="pagination--item-prev"
             @click="list.getListProduct(list.currentPageNumber - 1)"

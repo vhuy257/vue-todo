@@ -1,10 +1,17 @@
 <div class="category--list">  
-    <div class="category--list__all">
+    <div class="category--list__all" v-if="!list.isLoading">
         <ul>
           <li 
+            @click="getProductByCategory('All')"
+            class="category--list__all-item--all"
+            :class="{ active : activeCategory === 'All' }"
+          > All
+          </li>
+          <li 
             v-for="item in list.listCategories" 
-            @click="list.getProductByCategory(item)"
-            class="category--list__all-item">
+            @click="getProductByCategory(item)"
+            class="category--list__all-item"
+            :class="{ active : activeCategory === item }">
             {{item}}
           </li>
         </ul>
