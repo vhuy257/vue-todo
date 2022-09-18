@@ -9,6 +9,10 @@ export const getDetailProduct = (productId: string) => {
     return axios.get('https://dummyjson.com/products/' + productId);
 };
 
+export const getProductCategories = () => {
+    return axios.get('https://dummyjson.com/products/categories');
+};
+
 export const getProductByCategory = (category: string) => {
     return axios.get('https://dummyjson.com/products/category/' + category);
 };
