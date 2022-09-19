@@ -15,7 +15,12 @@ export default {
     <div class="pagination" v-if="list.totalPage">
         <button
             class="pagination--item-prev"
-            @click="list.getListProduct(list.currentPageNumber - 1)"
+            @click="
+                list.getListProduct(
+                    list.currentPageNumber - 1,
+                    list.limitProduct
+                )
+            "
         >
             Previous
         </button>
@@ -23,7 +28,7 @@ export default {
             <li
                 v-for="item in list.totalPage"
                 :key="item"
-                @click="list.getListProduct(item)"
+                @click="list.getListProduct(item, list.limitProduct)"
                 :class="{ active: item === list.currentPageNumber }"
             >
                 <button>{{ item }}</button>
@@ -31,7 +36,12 @@ export default {
         </ul>
         <button
             class="pagination--item-next"
-            @click="list.getListProduct(list.currentPageNumber + 1)"
+            @click="
+                list.getListProduct(
+                    list.currentPageNumber + 1,
+                    list.limitProduct
+                )
+            "
         >
             Next
         </button>

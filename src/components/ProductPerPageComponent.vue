@@ -1,29 +1,27 @@
 <script lang="ts">
 import { useCounterStore } from '@/stores/category';
-import { PRODUCT_PER_PAGE } from '@/config/config';
 
 export default {
     setup() {
         const list = useCounterStore();
 
         return {
-            list,
-            PRODUCT_PER_PAGE
+            list
         };
     }
-}
+};
 </script>
 <template>
     <div class="product--perpage">
         Product Per Page:
         <div class="product--perpage-option">
             <div class="product--perpage-option__selected">
-                {{ PRODUCT_PER_PAGE }}
+                {{ list.limitProduct }}
             </div>
             <ul>
-                <li>10</li>
-                <li>20</li>
-                <li>40</li>
+                <li @click="list.getListProduct(1, 10)">10</li>
+                <li @click="list.getListProduct(1, 20)">20</li>
+                <li @click="list.getListProduct(1, 40)">40</li>
             </ul>
         </div>
     </div>
@@ -49,7 +47,7 @@ export default {
             box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
             border-radius: 5px;
             position: absolute;
-            bottom: 0;
+            bottom: 20px;
             z-index: 9;
             background-color: #fff;
             display: none;

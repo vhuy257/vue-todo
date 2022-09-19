@@ -17,6 +17,7 @@ export const useCounterStore = defineStore({
         isLoadingAddtoCart: false as boolean,
         product: {} as Product,
         totalPage: 0 as number,
+        limitProduct: PRODUCT_PER_PAGE as number,
         classActiveCategory: '' as string,
         currentPageNumber: 1 as number,
         productByCategory: [] as Product[],
@@ -25,7 +26,7 @@ export const useCounterStore = defineStore({
         listCategories: [] as string[]
     }),
     actions: {
-        async getListProduct(pageItem: number) {
+        async getListProduct(pageItem: number, limit?: number) {
             if (pageItem < 1) {
                 return false;
             }
@@ -33,15 +34,16 @@ export const useCounterStore = defineStore({
                 return false;
             }
             this.isLoading = true;
+            this.limitProduct = limit || PRODUCT_PER_PAGE;
             const { data } = await getList(
-                PRODUCT_PER_PAGE,
+                this.limitProduct,
                 (pageItem - 1) * PRODUCT_PER_PAGE
             );
             this.list = data;
             this.processPagination(data.total, pageItem);
         },
         processPagination(total: number, pageItem: number) {
-            this.totalPage = Math.round(total / PRODUCT_PER_PAGE);
+            this.totalPage = Math.round(total / this.limitProduct);
             this.isLoading = false;
             this.currentPageNumber = pageItem;
         },
