@@ -24,6 +24,17 @@ export const searchProduct = (productName: string) => {
 
 export const addProductToCart = (product: Product) => {
     const db = JSON.parse(localStorage.getItem('cart') as string) || [];
-    const newDb = [...db, product];
-    localStorage.setItem('cart', JSON.stringify(newDb));
+    const checkDuplicate = db.findIndex(
+        (item: Product) => item.id === product.id
+    );
+
+    if (checkDuplicate === -1) {
+        const updateQtyProduct = { ...product, qty: 1 };
+        const newDb = [...db, updateQtyProduct];
+        localStorage.setItem('cart', JSON.stringify(newDb));
+    } else {
+        const newDb = db;
+        newDb[checkDuplicate].qty += 1;
+        localStorage.setItem('cart', JSON.stringify(newDb));
+    }
 };
