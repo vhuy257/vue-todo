@@ -1,5 +1,18 @@
-<script setup lang="ts">
+<script lang="ts">
 import { RouterLink, RouterView } from 'vue-router';
+import { useCounterStore } from '@/stores/category'; 
+export default {
+    setup() {
+        const category = useCounterStore();
+        category.getCartLength();
+
+        return {
+            category,
+            RouterLink,
+            RouterView
+        };
+    }
+};
 </script>
 
 <template>
@@ -8,17 +21,68 @@ import { RouterLink, RouterView } from 'vue-router';
             <nav>
                 <RouterLink to="/">Home</RouterLink>
                 <RouterLink to="/category">Category</RouterLink>
+                <RouterLink to="/blog">Blog</RouterLink>
             </nav>
+            <div class="customer--wrapper">
+                <div class="customer--wrapper__cart">
+                    <img
+                        src="./assets/images/cart-add-svgrepo-com.svg"
+                        width="35"
+                    />
+                    <span class="customer--wrapper__cart--total">
+                        <span v-if="category.isLoadingAddtoCart">
+                            <img src="./assets/images/loading.svg" width="17" />
+                        </span>
+                        <span v-if="!category.isLoadingAddtoCart">
+                            {{ category.cartLength }}
+                        </span>
+                    </span>
+                </div>
+            </div>
         </div>
     </header>
 
     <RouterView />
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
+@import '@/assets/mixins.scss';
 header {
     line-height: 1.5;
     max-height: 100vh;
+    padding: 10px 0;
+    margin-bottom: 40px;
+    position: sticky;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 9;
+    background-color: #fff;
+    .wrapper {
+        @include flex-container($align: center);
+        width: 100%;
+        max-width: 1440px;
+        margin: 0 auto;
+        .customer--wrapper {
+            &__cart {
+                position: relative;
+                cursor: pointer;
+                img {
+                    display: inline-block;
+                    vertical-align: bottom;
+                }
+                &--total {
+                    background-color: var(--color-red);
+                    color: #fff;
+                    font-size: 12px;
+                    display: inline-block;
+                    vertical-align: bottom;
+                    padding: 3px 7px;
+                    border-radius: 3px;
+                }
+            }
+        }
+    }
 }
 
 .logo {
@@ -27,10 +91,8 @@ header {
 }
 
 nav {
-    width: 100%;
     font-size: 12px;
     text-align: center;
-    margin-top: 2rem;
 }
 
 nav a.router-link-exact-active {
@@ -60,7 +122,6 @@ nav a:first-of-type {
     header {
         display: flex;
         place-items: center;
-        padding-right: calc(var(--section-gap) / 2);
     }
 
     .logo {
@@ -69,7 +130,6 @@ nav a:first-of-type {
 
     header .wrapper {
         display: flex;
-        place-items: flex-start;
         flex-wrap: wrap;
     }
 

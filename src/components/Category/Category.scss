@@ -19,7 +19,7 @@
             position: relative;
             padding: 15px;
             border-radius: 5px;
-            box-shadow: 0px 1px 2px 0px #adacac;
+            box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
             
             &-image {
                 margin-bottom: 15px;
@@ -98,8 +98,8 @@
                             background-image: url('../../assets/images/cart-add-svgrepo-com-white.svg');
                             display: inline-block;
                             vertical-align: middle;
-                            width: 25px;
-                            height: 25px;
+                            width: 24px;
+                            height: 24px;
                             margin-left: 5px;
                         }
 
@@ -111,6 +111,13 @@
                             &::after {
                                 content: '';
                                 background-image: url('../../assets/images/cart-add-svgrepo-com-white.svg');
+                            }
+                        }
+
+                        &.loading {
+                            &::after {
+                                background-image: url('../../assets/images/loading.svg');
+                                margin-left: 0;
                             }
                         }
                     }
@@ -129,7 +136,8 @@
         }   
     }
 
-    &_pagination {
+    &-bottom {
+        @include flex-container($align: center);
         max-width: 1440px;
         margin: 40px auto;
     }

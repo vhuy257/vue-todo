@@ -1,8 +1,9 @@
 import axios from 'axios';
+import type { Product } from '@/model/product';
 
 export const getList = (limit: number, skip: number) => {
     return axios.get(`
-    https://dummyjson.com/products?limit=${limit || 12}&skip=${skip || 0}`);
+    https://dummyjson.com/products?limit=${limit}&skip=${skip}`);
 };
 
 export const getDetailProduct = (productId: string) => {
@@ -21,6 +22,8 @@ export const searchProduct = (productName: string) => {
     return axios.get('https://dummyjson.com/products/search?q=' + productName);
 };
 
-export const getAllCart = () => {
-    return axios.get('https://dummyjson.com/carts');
+export const addProductToCart = (product: Product) => {
+    const db = JSON.parse(localStorage.getItem('cart') as string) || [];
+    const newDb = [...db, product];
+    localStorage.setItem('cart', JSON.stringify(newDb));
 };

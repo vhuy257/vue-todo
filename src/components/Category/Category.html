@@ -39,13 +39,18 @@
           </div>
         </div>
         <div class="item--wrapper-content__action">
-          <button class="item--wrapper-content__action-addtocart">
+          <button class="item--wrapper-content__action-addtocart" @click="list.addProductToCartAction(item)">
             Add to Cart
           </button>
         </div>
       </li>
     </ul>
 </div>
-<div class="category--list_pagination">
-    <PaginationComponent />
+<div class="category--list-bottom">
+    <div class="category--list_productperpage">
+      <ProductPerPageComponent />
+    </div>
+    <div class="category--list_pagination">
+        <PaginationComponent />
+    </div>
 </div>

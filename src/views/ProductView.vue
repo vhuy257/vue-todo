@@ -85,7 +85,11 @@ export default {
                 </div>
             </div>
             <div class="product--detail-content__action button main">
-                <button>Add to Cart</button>
+                <button
+                    @click="category.addProductToCartAction(category.product)"
+                >
+                    Add to Cart
+                </button>
             </div>
             <div class="product--detail-content__service">
                 <ul>
@@ -158,6 +162,7 @@ export default {
                         </div>
                         <div class="carousel__item-productaction">
                             <button
+                                @click="category.addProductToCartAction(slide)"
                                 class="carousel__item-productaction__addtocart"
                             >
                                 Add to Cart
@@ -257,8 +262,8 @@ export default {
                 margin-left: 5px;
             }
             &:hover {
-                background-color: var(--button-main-background-color-hover);
-                border-color: var(--button-main-background-color-hover);
+                background-color: var(--background-green);
+                border-color: var(--background-green);
                 color: #fff;
                 &::after {
                     content: '';
@@ -374,7 +379,7 @@ export default {
                 padding: 3px 7px;
 
                 &:hover {
-                    background-color: var(--button-main-background-color-hover);
+                    background-color: var(--background-green);
                 }
             }
         }

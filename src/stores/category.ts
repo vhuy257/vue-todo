@@ -4,28 +4,24 @@ import {
     getDetailProduct,
     getProductByCategory,
     getProductCategories,
-    getAllCart
+    addProductToCart
 } from '@/service/getFakeProduct';
 import { PRODUCT_PER_PAGE } from '@/config/config';
-
-export interface Product {
-    id?: string;
-    title?: string;
-    category?: string;
-    images?: string[];
-}
+import type { Product } from '@/model/product';
 
 export const useCounterStore = defineStore({
     id: 'category',
     state: () => ({
         message: '' as string,
         isLoading: true as boolean,
+        isLoadingAddtoCart: false as boolean,
         product: {} as Product,
         totalPage: 0 as number,
         classActiveCategory: '' as string,
         currentPageNumber: 1 as number,
         productByCategory: [] as Product[],
         list: [] as Product[],
+        cartLength: 0 as number,
         listCategories: [] as string[]
     }),
     actions: {
@@ -75,9 +71,18 @@ export const useCounterStore = defineStore({
             }
             this.classActiveCategory = categoryName;
         },
-        async getAllCart() {
-            const { data } = await getAllCart();
-            console.log(data);
+        getCartLength() {
+            const data =
+                JSON.parse(localStorage.getItem('cart') as string) || [];
+            this.cartLength = data.length;
+        },
+        addProductToCartAction(product: Product) {
+            this.isLoadingAddtoCart = true;
+            addProductToCart(product);
+            setTimeout(() => {
+                this.isLoadingAddtoCart = false;
+            }, 1000);
+            this.getCartLength();
         }
     }
 });

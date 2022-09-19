@@ -1,18 +1,19 @@
 import { useCounterStore } from '@/stores/category';
 import PaginationComponent from '@/components/PaginationComponent.vue';
+import ProductPerPageComponent from '@/components/ProductPerPageComponent.vue';
 
 export default {
     setup() {
         const list = useCounterStore();
         list.getListProduct(1);
         list.getAllCategories();
-        list.getAllCart();
 
         return {
             list
         };
     },
     components: {
-        PaginationComponent
+        PaginationComponent,
+        ProductPerPageComponent
     }
 };
