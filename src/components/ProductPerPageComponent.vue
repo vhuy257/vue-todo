@@ -1,12 +1,12 @@
 <script lang="ts">
-import { useCounterStore } from '@/stores/category';
+import { useCategoryStore } from '@/stores/category';
 
 export default {
     setup() {
-        const list = useCounterStore();
+        const category = useCategoryStore();
 
         return {
-            list
+            category
         };
     }
 };
@@ -16,12 +16,16 @@ export default {
         Product Per Page:
         <div class="product--perpage-option">
             <div class="product--perpage-option__selected">
-                {{ list.limitProduct }}
+                {{ category.limitProduct }}
             </div>
             <ul>
-                <li @click="list.getListProduct(1, 10)">10</li>
-                <li @click="list.getListProduct(1, 20)">20</li>
-                <li @click="list.getListProduct(1, 40)">40</li>
+                <li
+                    v-for="item in [10, 20, 40]"
+                    :key="item"
+                    @click="category.getListProduct(1, item)"
+                >
+                    {{ item }}
+                </li>
             </ul>
         </div>
     </div>

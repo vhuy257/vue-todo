@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia';
-import { getAllPost } from '@/service/getPost';
+import { getAllPost } from '@/service/post';
 
 export interface Post {
     id?: string;

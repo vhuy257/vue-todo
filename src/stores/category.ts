@@ -3,18 +3,16 @@ import {
     getList,
     getDetailProduct,
     getProductByCategory,
-    getProductCategories,
-    addProductToCart
-} from '@/service/getFakeProduct';
+    getProductCategories
+} from '@/service/category';
 import { PRODUCT_PER_PAGE } from '@/config/config';
 import type { Product } from '@/model/product';
 
-export const useCounterStore = defineStore({
+export const useCategoryStore = defineStore({
     id: 'category',
     state: () => ({
         message: '' as string,
         isLoading: true as boolean,
-        isLoadingAddtoCart: false as boolean,
         product: {} as Product,
         totalPage: 0 as number,
         limitProduct: PRODUCT_PER_PAGE as number,
@@ -22,7 +20,6 @@ export const useCounterStore = defineStore({
         currentPageNumber: 1 as number,
         productByCategory: [] as Product[],
         list: [] as Product[],
-        cartLength: 0 as number,
         listCategories: [] as string[]
     }),
     actions: {
@@ -72,19 +69,6 @@ export const useCounterStore = defineStore({
                 this.getProductByCategory(categoryName);
             }
             this.classActiveCategory = categoryName;
-        },
-        getCartLength() {
-            const data =
-                JSON.parse(localStorage.getItem('cart') as string) || [];
-            this.cartLength = data.length;
-        },
-        addProductToCartAction(product: Product) {
-            this.isLoadingAddtoCart = true;
-            addProductToCart(product);
-            setTimeout(() => {
-                this.isLoadingAddtoCart = false;
-            }, 1000);
-            this.getCartLength();
         }
     }
 });

@@ -14,8 +14,6 @@ const router = createRouter({
             path: '/category',
             name: 'category',
             meta: { title: 'Category' },
-            // route level code-splitting
-            // this generates a separate chunk (About.[hash].js) for this route
             // which is lazy-loaded when the route is visited.
             component: () => import('../views/CategoryView.vue')
         },
@@ -23,8 +21,6 @@ const router = createRouter({
             path: '/product/:id',
             name: 'product-detail',
             meta: { title: 'Product detail' },
-            // route level code-splitting
-            // this generates a separate chunk (About.[hash].js) for this route
             // which is lazy-loaded when the route is visited.
             component: () => import('../views/ProductView.vue')
         },
@@ -32,6 +28,7 @@ const router = createRouter({
             path: '/blog',
             name: 'blog',
             meta: { title: 'Blog' },
+            // which is lazy-loaded when the route is visited.
             component: () => import('../views/ListBlog.vue')
         }
     ]

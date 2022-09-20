@@ -1,19 +1,24 @@
-import { useCounterStore } from '@/stores/category';
+import { useCategoryStore } from '@/stores/category';
 import PaginationComponent from '@/components/PaginationComponent.vue';
 import ProductPerPageComponent from '@/components/ProductPerPageComponent.vue';
+import ModalCartComponent from '@/components/ModalCartComponent.vue';
+import { useCartStore } from '@/stores/cart';
 
 export default {
     setup() {
-        const list = useCounterStore();
-        list.getListProduct(1);
-        list.getAllCategories();
+        const category = useCategoryStore();
+        const cart = useCartStore();
+        category.getListProduct(1);
+        category.getAllCategories();
 
         return {
-            list
+            category,
+            cart
         };
     },
     components: {
         PaginationComponent,
-        ProductPerPageComponent
+        ProductPerPageComponent,
+        ModalCartComponent
     }
 };

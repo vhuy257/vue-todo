@@ -1,6 +1,6 @@
 <script lang="ts">
 import { useRoute } from 'vue-router';
-import { useCounterStore } from '@/stores/category';
+import { useCategoryStore } from '@/stores/category';
 //Vue carousel
 import 'vue3-carousel/dist/carousel.css';
 import { Carousel, Slide, Navigation } from 'vue3-carousel';
@@ -8,7 +8,7 @@ import { Carousel, Slide, Navigation } from 'vue3-carousel';
 export default {
     setup() {
         const route = useRoute();
-        const category = useCounterStore();
+        const category = useCategoryStore();
         const productId = route.params.id as string;
 
         category.getProduct(productId);
@@ -247,11 +247,9 @@ export default {
             font-size: var(--font-l);
             padding: 9px 12px;
             margin-top: 25px;
-            border: 1px solid var(--button-main-background-color);
-            background-color: var(--button-main-background-color);
             text-align: center;
-            color: #fff;
             width: 100%;
+            @include buttonPrimary();
             &::after {
                 content: '';
                 background-image: url('../assets/images/cart-add-svgrepo-com-white.svg');

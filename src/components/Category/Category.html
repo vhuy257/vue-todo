@@ -1,26 +1,26 @@
 <div class="category--list">  
-    <div class="category--list__all" v-if="!list.isLoading">
+    <div class="category--list__all" v-if="!category.isLoading">
         <ul>
           <li 
             class="category--list__all-item--all"
-            :class="{ active : list.classActiveCategory === 'All' }"
-            @click="list.getProductEvent('All')"
+            :class="{ active : category.classActiveCategory === 'All' }"
+            @click="category.getProductEvent('All')"
           > All
           </li>
           <li 
-            v-for="item in list.listCategories" 
-            @click="list.getProductEvent(item)"
+            v-for="item in category.listCategories" 
+            @click="category.getProductEvent(item)"
             class="category--list__all-item"
-            :class="{ active : list.classActiveCategory === item }">
+            :class="{ active : category.classActiveCategory === item }">
             {{item}}
           </li>
         </ul>
     </div>
-    <div class="about--loading" v-if="list.isLoading">
+    <div class="about--loading" v-if="category.isLoading">
       Loading...
     </div>
-    <ul v-if="!list.isLoading">
-      <li v-for="item in list.list.products" :key="item.id" class="item--wrapper">    
+    <ul v-if="!category.isLoading">
+      <li v-for="item in category.list.products" :key="item.id" class="item--wrapper">    
         <div class="item--wrapper-image">
           <a :href="'/product/' + item.id" class="item--wrapper-content__product-name">
             <img v-bind:src="item.thumbnail" width="250" class="rounded"/>    
@@ -39,8 +39,10 @@
           </div>
         </div>
         <div class="item--wrapper-content__action">
-          <button class="item--wrapper-content__action-addtocart" @click="list.addProductToCartAction(item)">
-            Add to Cart
+          <button class="item--wrapper-content__action-addtocart" @click="cart.addProductToCartAction(item)">
+              <span v-if="!item.isAddedtoCart && !item.isLoadingAddtoCart">Add to Cart</span>
+              <span v-if="!item.isAddedtoCart && item.isLoadingAddtoCart">Adding to Cart</span>
+              <span v-if="item.isAddedtoCart && !item.isLoadingAddtoCart">Added to Cart</span>
           </button>
         </div>
       </li>
@@ -54,3 +56,4 @@
         <PaginationComponent />
     </div>
 </div>
+<ModalCartComponent />

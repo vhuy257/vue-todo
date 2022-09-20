@@ -1,24 +1,24 @@
 <script lang="ts">
-import { useCounterStore } from '@/stores/category';
+import { useCategoryStore } from '@/stores/category';
 
 export default {
     setup() {
-        const list = useCounterStore();
+        const category = useCategoryStore();
 
         return {
-            list
+            category
         };
     }
 };
 </script>
 <template>
-    <div class="pagination" v-if="list.totalPage">
+    <div class="pagination" v-if="category.totalPage">
         <button
             class="pagination--item-prev"
             @click="
-                list.getListProduct(
-                    list.currentPageNumber - 1,
-                    list.limitProduct
+                category.getListProduct(
+                    category.currentPageNumber - 1,
+                    category.limitProduct
                 )
             "
         >
@@ -26,10 +26,10 @@ export default {
         </button>
         <ul>
             <li
-                v-for="item in list.totalPage"
+                v-for="item in category.totalPage"
                 :key="item"
-                @click="list.getListProduct(item, list.limitProduct)"
-                :class="{ active: item === list.currentPageNumber }"
+                @click="category.getListProduct(item, category.limitProduct)"
+                :class="{ active: item === category.currentPageNumber }"
             >
                 <button>{{ item }}</button>
             </li>
@@ -37,9 +37,9 @@ export default {
         <button
             class="pagination--item-next"
             @click="
-                list.getListProduct(
-                    list.currentPageNumber + 1,
-                    list.limitProduct
+                category.getListProduct(
+                    category.currentPageNumber + 1,
+                    category.limitProduct
                 )
             "
         >

@@ -1,13 +1,17 @@
 <script lang="ts">
 import { RouterLink, RouterView } from 'vue-router';
-import { useCounterStore } from '@/stores/category'; 
+import { useCartStore } from '@/stores/cart';
+import { useModalStore } from './stores/modal';
+
 export default {
     setup() {
-        const category = useCounterStore();
-        category.getCartLength();
+        const cart = useCartStore();
+        const modal = useModalStore();
+        cart.getCartLength();
 
         return {
-            category,
+            cart,
+            modal,
             RouterLink,
             RouterView
         };
@@ -24,17 +28,20 @@ export default {
                 <RouterLink to="/blog">Blog</RouterLink>
             </nav>
             <div class="customer--wrapper">
-                <div class="customer--wrapper__cart">
+                <div
+                    class="customer--wrapper__cart"
+                    @click="modal.showHideModal(true)"
+                >
                     <img
                         src="./assets/images/cart-add-svgrepo-com.svg"
                         width="35"
                     />
                     <span class="customer--wrapper__cart--total">
-                        <span v-if="category.isLoadingAddtoCart">
+                        <span v-if="cart.isLoadingAddtoCart">
                             <img src="./assets/images/loading.svg" width="17" />
                         </span>
-                        <span v-if="!category.isLoadingAddtoCart">
-                            {{ category.cartLength }}
+                        <span v-if="!cart.isLoadingAddtoCart">
+                            {{ cart.cartLength }}
                         </span>
                     </span>
                 </div>

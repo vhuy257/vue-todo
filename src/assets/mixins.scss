@@ -8,3 +8,46 @@
     flex-direction: unquote($dir);
     flex-wrap: unquote($wrap);
 }
+
+@mixin scrollbars($size, $foreground-color, $background-color: mix($foreground-color, white,  50%)) {
+    // For Google Chrome
+    &::-webkit-scrollbar {
+      width:  $size;
+      height: $size;
+    }
+  
+    &::-webkit-scrollbar-thumb {
+      background: $foreground-color;
+    }
+  
+    &::-webkit-scrollbar-track {
+      background: $background-color;
+    }
+  
+    // For Internet Explorer
+    & {
+      scrollbar-face-color: $foreground-color;
+      scrollbar-track-color: $background-color;
+    }
+}
+
+@mixin buttonPrimary() {
+    border-radius: 3px;
+    background-color: var(--button-main-background-color);
+    color: #fff;
+
+    &:hover {
+        background-color: var(--background-green);
+    }
+}
+
+@mixin overlayLoadingBlack() {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: rgb(255 255 255 / 62%);
+    border-radius: 5px;
+    @include flex-container($align: center, $justify: center);
+}

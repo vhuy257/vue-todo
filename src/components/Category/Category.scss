@@ -89,9 +89,7 @@
                         font-weight: 400;
                         font-size: 14px;
                         padding: 5px 8px;
-                        background-color: var(--button-main-background-color);
-                        color: #fff;
-                        border: 1px solid var(--button-main-background-color);
+                        @include buttonPrimary();
 
                         &::after {
                             content: '';
