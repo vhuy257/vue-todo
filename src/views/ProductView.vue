@@ -1,6 +1,8 @@
 <script lang="ts">
 import { useRoute } from 'vue-router';
 import { useCategoryStore } from '@/stores/category';
+import { useCartStore } from '@/stores/cart';
+
 //Vue carousel
 import 'vue3-carousel/dist/carousel.css';
 import { Carousel, Slide, Navigation } from 'vue3-carousel';
@@ -9,12 +11,15 @@ export default {
     setup() {
         const route = useRoute();
         const category = useCategoryStore();
+        const cart = useCartStore();
+        cart.isLoadingAddtoCart = false;
         const productId = route.params.id as string;
 
         category.getProduct(productId);
 
         return {
-            category
+            category,
+            cart
         };
     },
     components: {
@@ -85,9 +90,7 @@ export default {
                 </div>
             </div>
             <div class="product--detail-content__action button main">
-                <button
-                    @click="category.addProductToCartAction(category.product)"
-                >
+                <button @click="cart.addProductToCartAction(category.product)">
                     Add to Cart
                 </button>
             </div>
@@ -162,7 +165,7 @@ export default {
                         </div>
                         <div class="carousel__item-productaction">
                             <button
-                                @click="category.addProductToCartAction(slide)"
+                                @click="cart.addProductToCartAction(slide)"
                                 class="carousel__item-productaction__addtocart"
                             >
                                 Add to Cart

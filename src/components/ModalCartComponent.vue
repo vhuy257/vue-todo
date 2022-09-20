@@ -71,12 +71,6 @@ export default {
                     </div>
                 </div>
                 <div
-                    class="modal--cart-wrapper__content--overlayloading"
-                    v-if="cart.isLoadingAddtoCart"
-                >
-                    <img src="../assets/images/loading-black.svg" />
-                </div>
-                <div
                     class="modal--cart-wrapper__content--empty"
                     v-if="cart.cartListItems.length == 0"
                 >
@@ -120,12 +114,12 @@ export default {
                         Checkout
                     </button>
                 </div>
-                <div
-                    class="modal--cart-wrapper__total--overlayloading"
-                    v-if="cart.isLoadingAddtoCart"
-                >
-                    <img src="../assets/images/loading-black.svg" />
-                </div>
+            </div>
+            <div
+                class="modal--cart-wrapper__content--overlayloading"
+                v-if="cart.isLoadingAddtoCart"
+            >
+                <img src="../assets/images/loading-black.svg" />
             </div>
         </div>
     </div>

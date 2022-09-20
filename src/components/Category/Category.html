@@ -39,10 +39,13 @@
           </div>
         </div>
         <div class="item--wrapper-content__action">
-          <button class="item--wrapper-content__action-addtocart" @click="cart.addProductToCartAction(item)">
+          <button 
+          :disabled="!item.isAddedtoCart && item.isLoadingAddtoCart"
+          class="item--wrapper-content__action-addtocart" 
+          @click="cart.addProductToCartAction(item)">
               <span v-if="!item.isAddedtoCart && !item.isLoadingAddtoCart">Add to Cart</span>
-              <span v-if="!item.isAddedtoCart && item.isLoadingAddtoCart">Adding to Cart</span>
-              <span v-if="item.isAddedtoCart && !item.isLoadingAddtoCart">Added to Cart</span>
+              <span v-if="!item.isAddedtoCart && item.isLoadingAddtoCart">Adding...</span>
+              <span v-if="item.isAddedtoCart && !item.isLoadingAddtoCart">Added</span>
           </button>
         </div>
       </li>
