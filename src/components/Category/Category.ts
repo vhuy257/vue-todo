@@ -1,7 +1,7 @@
 import { useCategoryStore } from '@/stores/category';
 import PaginationComponent from '@/components/PaginationComponent.vue';
 import ProductPerPageComponent from '@/components/ProductPerPageComponent.vue';
-import ModalCartComponent from '@/components/ModalCartComponent.vue';
+import AddtoCart from '@/components/AddToCart/AddToCart.vue';
 import { useCartStore } from '@/stores/cart';
 
 export default {
@@ -19,6 +19,6 @@ export default {
     components: {
         PaginationComponent,
         ProductPerPageComponent,
-        ModalCartComponent
+        AddtoCart
     }
 };

@@ -2,6 +2,7 @@
 import { RouterLink, RouterView } from 'vue-router';
 import { useCartStore } from '@/stores/cart';
 import { useModalStore } from './stores/modal';
+import ModalCartComponent from '@/components/ModalCartComponent.vue';
 
 export default {
     setup() {
@@ -15,6 +16,9 @@ export default {
             RouterLink,
             RouterView
         };
+    },
+    components: {
+        ModalCartComponent
     }
 };
 </script>
@@ -48,8 +52,8 @@ export default {
             </div>
         </div>
     </header>
-
     <RouterView />
+    <ModalCartComponent />
 </template>
 
 <style lang="scss" scoped>

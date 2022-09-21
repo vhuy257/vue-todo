@@ -63,12 +63,14 @@ export default {
         &-prev,
         &-next {
             border: 1px solid var(--button-main-background-color);
+            color: var(--button-main-background-color);
             border-radius: 3px;
             padding: 5px 13px;
             width: 80px;
             margin: 0 20px;
             &:hover {
                 background-color: var(--button-main-background-color-hover);
+                border-color: var(--button-main-background-color-hover);
                 color: #fff;
             }
         }
@@ -87,10 +89,12 @@ export default {
             margin: 0 10px;
             font-size: var(--font-m);
             button {
+                color: var(--button-main-background-color);
                 border: 1px solid var(--button-main-background-color);
                 padding: 2px 8px;
                 border-radius: 3px;
                 &:hover {
+                    border-color: var(--button-main-background-color-hover); 
                     background-color: var(--button-main-background-color-hover);
                     color: #fff;
                 }
@@ -98,6 +102,7 @@ export default {
             &.active {
                 button {
                     background-color: var(--button-main-background-color-hover);
+                    border-color: var(--button-main-background-color-hover);
                     color: #fff;
                 }
             }

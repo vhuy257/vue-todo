@@ -52,6 +52,7 @@ export const useCategoryStore = defineStore({
             this.isLoading = true;
             const { data } = await getDetailProduct(productId);
             this.product = data;
+            this.product.qty = 1;
             this.isLoading = false;
             const category = this.product.category as string;
             const dataRes = await getProductByCategory(category);

@@ -100,24 +100,6 @@
                             height: 24px;
                             margin-left: 5px;
                         }
-
-                        &:hover {
-                            background-color: var(--background-green);
-                            border-color: var(--background-green);
-                            color: #fff;
-
-                            &::after {
-                                content: '';
-                                background-image: url('../../assets/images/cart-add-svgrepo-com-white.svg');
-                            }
-                        }
-
-                        &.loading {
-                            &::after {
-                                background-image: url('../../assets/images/loading.svg');
-                                margin-left: 0;
-                            }
-                        }
                     }
                 }
 
@@ -171,5 +153,12 @@
                 background-color: var(--color-red);
             }
         }
+    }
+
+    &-loading {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
     }
 }

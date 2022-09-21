@@ -13,14 +13,14 @@ export const addProductToCart = (product: Product) => {
     const checkDuplicate = db.findIndex(
         (item: Product) => item.id === product.id
     );
-
+    product.qty !== undefined ? product.qty : (product.qty = 1);
     if (checkDuplicate === -1) {
-        const updateQtyProduct = { ...product, qty: 1 };
+        const updateQtyProduct = { ...product, qty: product.qty };
         const newDb = [...db, updateQtyProduct];
         setLocalStorage(newDb);
     } else {
         const newDb = db;
-        newDb[checkDuplicate].qty += 1;
+        newDb[checkDuplicate].qty += product.qty;
         setLocalStorage(newDb);
     }
 };

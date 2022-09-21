@@ -16,8 +16,8 @@
           </li>
         </ul>
     </div>
-    <div class="about--loading" v-if="category.isLoading">
-      Loading...
+    <div class="category--list-loading" v-if="category.isLoading">
+      <img src="../assets/images/loading-black.svg">
     </div>
     <ul v-if="!category.isLoading">
       <li v-for="item in category.list.products" :key="item.id" class="item--wrapper">    
@@ -39,14 +39,7 @@
           </div>
         </div>
         <div class="item--wrapper-content__action">
-          <button 
-          :disabled="!item.isAddedtoCart && item.isLoadingAddtoCart"
-          class="item--wrapper-content__action-addtocart" 
-          @click="cart.addProductToCartAction(item)">
-              <span v-if="!item.isAddedtoCart && !item.isLoadingAddtoCart">Add to Cart</span>
-              <span v-if="!item.isAddedtoCart && item.isLoadingAddtoCart">Adding...</span>
-              <span v-if="item.isAddedtoCart && !item.isLoadingAddtoCart">Added</span>
-          </button>
+            <AddtoCart :item="item" />
         </div>
       </li>
     </ul>
@@ -59,4 +52,3 @@
         <PaginationComponent />
     </div>
 </div>
-<ModalCartComponent />

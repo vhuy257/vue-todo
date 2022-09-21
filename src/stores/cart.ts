@@ -51,16 +51,15 @@ export const useCartStore = defineStore({
                 product.isLoadingAddtoCart = false;
                 this.isLoadingAddtoCart = false;
                 modal.showHideModal(true);
+                this.getCartLength();
+                this.getCartListItems();
+                this.updateTotalPriceCart();
             }, 1000);
 
             setTimeout(() => {
                 //Hide added to cart after 3s
                 product.isAddedtoCart = false;
             }, 3000);
-
-            this.getCartLength();
-            this.getCartListItems();
-            this.updateTotalPriceCart();
         },
         removeItem(product: Product) {
             this.isLoadingAddtoCart = true;

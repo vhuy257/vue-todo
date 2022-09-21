@@ -37,7 +37,17 @@
     color: #fff;
 
     &:hover {
-        background-color: var(--background-green);
+        background-color: var(--button-main-background-color-hover);
+    }
+}
+
+@mixin buttonSecondary() {
+    border-radius: 3px;
+    background-color: #FD841F;
+    color: #fff;
+
+    &:hover {
+        background-color: #E14D2A;
     }
 }
 
@@ -50,4 +60,23 @@
     background-color: rgb(255 255 255 / 62%);
     border-radius: 5px;
     @include flex-container($align: center, $justify: center);
+}
+
+@mixin message($type) {    
+    color: #333;
+    border-radius: 3px;
+    width: 100%;
+    padding: 5px 7px;
+    font-size: var(--font-m);
+    background-color: var(--vt-c-text-dark-2);
+
+    @if $type == 'success' {
+      background-color: var(--button-main-background-color);
+      color: #fff;
+    }
+
+    @if $type == 'danger' {
+      background-color: #E14D2A;
+      color: #fff;
+    }
 }

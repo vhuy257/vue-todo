@@ -41,7 +41,12 @@ export default {
                         <div
                             class="modal--cart-wrapper__content--item-detail_title"
                         >
-                            {{ item.title }}
+                            <a
+                                :href="'/product/' + item.id"
+                                class="item--wrapper-content__product-name"
+                            >
+                                {{ item.title }}
+                            </a>
                         </div>
                         <div
                             class="modal--cart-wrapper__content--item-detail_option"
@@ -134,7 +139,7 @@ export default {
     box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px,
         rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
     width: 800px;
-    height: 420px;
+    height: 390px;
     border-radius: 7px;
     background-color: #fff;
     padding: 10px 30px;
@@ -163,6 +168,10 @@ export default {
                 &_title {
                     font-size: var(--font-l);
                     font-weight: 500;
+                    a {
+                        text-decoration: none;
+                        color: #333;
+                    }
                 }
                 &_option {
                     font-size: var(--font-m);
@@ -194,7 +203,7 @@ export default {
         border-bottom: 1px solid var(--vt-c-text-dark-2);
         &-title {
             font-size: 22px;
-            padding: 10px 0;
+            padding: 5px 0;
         }
     }
     &__total {
@@ -213,6 +222,11 @@ export default {
         &-detail {
             width: 100%;
             margin: 10px 0;
+            background: #f9f9f9;
+            padding: 0 10px;
+            border-radius: 5px;
+            font-size: 14px;
+            color: #555;
             li {
                 @include flex-container($align: center);
                 margin: 5px 0;
@@ -236,21 +250,13 @@ export default {
             width: 100%;
             margin-top: 20px;
             &__viewcart {
-                display: block;
                 width: 100%;
-                font-weight: 500;
-                font-size: var(--font-l);
-                border-radius: 3px;
                 margin: 10px 0;
                 @include buttonPrimary();
             }
             &__checkout {
                 width: 100%;
-                font-size: var(--font-l);
-                font-weight: 500;
-                color: #fff;
-                border-radius: 3px;
-                background-color: var(--background-green);
+                @include buttonSecondary();
             }
         }
         &--overlayloading {
