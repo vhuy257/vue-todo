@@ -29,7 +29,14 @@ const router = createRouter({
             name: 'blog',
             meta: { title: 'Blog' },
             // which is lazy-loaded when the route is visited.
-            component: () => import('../views/ListBlog.vue')
+            component: () => import('../views/BlogView.vue')
+        },
+        {
+            path: '/cart',
+            name: 'cart',
+            meta: { title: 'Cart' },
+            // which is lazy-loaded when the route is visited.
+            component: () => import('../views/CartView.vue')
         }
     ]
 });

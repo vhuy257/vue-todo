@@ -30,13 +30,11 @@ export const useCartStore = defineStore({
                 item.totalPrice = item.qty * item.price;
             });
 
-            const total = this.cartListItems.reduce(
+            this.totalCartPrice = this.cartListItems.reduce(
                 (accumulator: number, curValue: Product) =>
                     accumulator + curValue.totalPrice,
                 0
             );
-
-            this.totalCartPrice = total;
         },
         addProductToCartAction(product: Product) {
             const modal = useModalStore();

@@ -10,7 +10,6 @@ import AddtoCart from '@/components/AddToCart/AddToCart.vue';
 import RecommendProductComponent from '@/components/RecommendProductComponent.vue';
 import PaymentMethodsComponent from '@/components/PaymentMethodsComponent.vue';
 import CustomerServiceCompnent from '@/components/CustomerServiceComponent.vue';
-import AlertMessage from '@/components/AlertMessage/AlertMessage.vue';
 
 export default {
     setup() {
@@ -34,8 +33,7 @@ export default {
         AddtoCart,
         RecommendProductComponent,
         PaymentMethodsComponent,
-        CustomerServiceCompnent,
-        AlertMessage
+        CustomerServiceCompnent
     }
 };
 </script>
@@ -44,7 +42,6 @@ export default {
     <div class="product--detail-loading" v-if="category.isLoading">
         <img src="../assets/images/loading-black.svg" />
     </div>
-    <AlertMessage message="This item added to cart successfully" />
     <div class="product--detail" v-if="!category.isLoading">
         <div
             class="product--detail-slider"
