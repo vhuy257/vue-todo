@@ -34,3 +34,7 @@ export const removeItemFromCart = (product: Product) => {
     const newDb = db.filter((item: Product) => item.id !== product.id);
     setLocalStorage(newDb);
 };
+
+export const updateCartItems = (cart: Product[]) => {
+    return setLocalStorage(cart);
+};

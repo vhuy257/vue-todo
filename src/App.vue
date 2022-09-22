@@ -49,11 +49,11 @@ export default {
                         </span>
                     </span>
                 </div>
+                <ModalCartComponent />
             </div>
         </div>
     </header>
     <RouterView />
-    <ModalCartComponent />
 </template>
 
 <style lang="scss" scoped>
@@ -72,9 +72,10 @@ header {
     .wrapper {
         @include flex-container($align: center);
         width: 100%;
-        max-width: 1440px;
+        max-width: var(--main-layout-max-width);
         margin: 0 auto;
         .customer--wrapper {
+            position: relative;
             &__cart {
                 position: relative;
                 cursor: pointer;

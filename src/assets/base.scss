@@ -4,6 +4,8 @@
   Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   --font-custom: 'Inter', sans-serif;
 
+  --main-layout-max-width: 1280px;
+
   --vt-c-white: #ffffff;
   --vt-c-white-soft: #f8f8f8;
   --vt-c-white-mute: #f2f2f2;
@@ -30,24 +32,12 @@
 
   --button-main-background-color: #24A19C;
   --button-main-background-color-hover: #6EBFB5;
+  --button-secondary-background-color: #FD841F;
+  --button-secondary-background-color-hover: #E14D2A;
 
   --font-m: 14px;
   --font-l: 16px;
-}
-
-/* semantic color variables for this project */
-:root {
-  --color-background: var(--vt-c-white);
-  --color-background-soft: var(--vt-c-white-soft);
-  --color-background-mute: var(--vt-c-white-mute);
-
-  --color-border: var(--vt-c-divider-light-2);
-  --color-border-hover: var(--vt-c-divider-light-1);
-
-  --color-heading: var(--vt-c-text-light-1);
-  --color-text: var(--vt-c-text-light-1);
-
-  --section-gap: 160px;
+  --font-xl: 18px;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -115,7 +105,8 @@ img {
   }
 }
 
-button {
+button,
+.button {
   padding: 8px 12px;
   border: none;
   background-color: transparent;
@@ -127,6 +118,8 @@ button {
   line-height: 20px;
   font-weight: 400;
   transition: all .2s cubic-bezier(0.19, 1, 0.22, 1);
+  text-decoration: none;
+  text-align: center;
 
   &.main {
     width: auto;

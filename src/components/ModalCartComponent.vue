@@ -18,7 +18,10 @@ export default {
 };
 </script>
 <template>
-    <div class="modal--cart-wrapper" v-if="modal.showModal">
+    <div
+        class="modal--cart-wrapper"
+        :class="{ active: modal.showModal === true }"
+    >
         <div class="modal--cart-wrapper__header">
             <span class="modal--cart-wrapper__header-title">
                 Your cart items
@@ -112,12 +115,18 @@ export default {
                     </div>
                 </div>
                 <div class="modal--cart-wrapper__total-action">
-                    <button class="modal--cart-wrapper__total-action__viewcart">
+                    <a
+                        href="/cart"
+                        class="modal--cart-wrapper__total-action__viewcart button"
+                    >
                         View Cart
-                    </button>
-                    <button class="modal--cart-wrapper__total-action__checkout">
+                    </a>
+                    <a
+                        href="/checkout"
+                        class="modal--cart-wrapper__total-action__checkout button"
+                    >
                         Checkout
-                    </button>
+                    </a>
                 </div>
             </div>
             <div
@@ -132,10 +141,9 @@ export default {
 <style lang="scss" scoped>
 @import '@/assets/mixins.scss';
 .modal--cart-wrapper {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    position: absolute;
+    top: 100%;
+    right: 0;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px,
         rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
     width: 800px;
@@ -143,6 +151,15 @@ export default {
     border-radius: 7px;
     background-color: #fff;
     padding: 10px 30px;
+    transition: all 0.2s ease-in-out;
+    transform: translateY(40px);
+    opacity: 0;
+
+    &.active {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
     &__main {
         @include flex-container($align: flex-start, $justify: flex-start);
     }

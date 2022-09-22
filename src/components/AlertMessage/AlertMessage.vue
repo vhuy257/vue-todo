@@ -11,7 +11,7 @@ export default {
 <style lang="scss" scoped>
 @import '@/assets/mixins.scss';
 .alert--message {
-    max-width: 1440px;
+    max-width: var(--main-layout-max-width);
     margin: 10px auto;
     &.success {
         @include message($type: 'success');

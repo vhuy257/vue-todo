@@ -36,7 +36,7 @@ export default {
 <style lang="scss">
 .blog--wrapper {
     display: grid;
-    max-width: 1440px;
+    max-width: var(--main-layout-max-width);
     margin: 20px auto;
     grid-template-columns: auto auto auto auto;
     grid-gap: 50px;

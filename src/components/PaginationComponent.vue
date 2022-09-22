@@ -94,7 +94,7 @@ export default {
                 padding: 2px 8px;
                 border-radius: 3px;
                 &:hover {
-                    border-color: var(--button-main-background-color-hover); 
+                    border-color: var(--button-main-background-color-hover);
                     background-color: var(--button-main-background-color-hover);
                     color: #fff;
                 }

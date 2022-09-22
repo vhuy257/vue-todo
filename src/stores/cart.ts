@@ -3,7 +3,8 @@ import type { Product } from '@/model/product';
 import {
     addProductToCart,
     getProductsFromCart,
-    removeItemFromCart
+    removeItemFromCart,
+    updateCartItems
 } from '@/service/cart';
 import { useModalStore } from './modal';
 
@@ -68,6 +69,14 @@ export const useCartStore = defineStore({
                     (item) => item.id !== product.id
                 );
                 this.updateTotalPriceCart();
+            }, 1000);
+        },
+        updateCartListItem(cart: Product[]) {
+            this.isLoadingAddtoCart = true;
+            setTimeout(() => {
+                updateCartItems(cart);
+                this.updateTotalPriceCart();
+                this.isLoadingAddtoCart = false;
             }, 1000);
         }
     }

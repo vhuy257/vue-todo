@@ -37,6 +37,13 @@ const router = createRouter({
             meta: { title: 'Cart' },
             // which is lazy-loaded when the route is visited.
             component: () => import('../views/CartView.vue')
+        },
+        {
+            path: '/checkout',
+            name: 'checkout',
+            meta: { title: 'Checkout' },
+            // which is lazy-loaded when the route is visited.
+            component: () => import('../views/CheckoutView.vue')
         }
     ]
 });

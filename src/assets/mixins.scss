@@ -43,11 +43,11 @@
 
 @mixin buttonSecondary() {
     border-radius: 3px;
-    background-color: #FD841F;
+    background-color: var(--button-secondary-background-color);
     color: #fff;
 
     &:hover {
-        background-color: #E14D2A;
+        background-color: var(--button-secondary-background-color-hover);
     }
 }
 
@@ -76,7 +76,7 @@
     }
 
     @if $type == 'danger' {
-      background-color: #E14D2A;
+      background-color: var(--button-secondary-background-color-hover);
       color: #fff;
     }
 }

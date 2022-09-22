@@ -108,8 +108,11 @@ export default {
                     </button>
                 </div>
             </div>
-            <div class="product--detail-content__action button main">
-                <AddtoCart :item="category.product" />
+            <div class="product--detail-content__action main">
+                <AddtoCart
+                    :item="category.product"
+                    class="product--detail-content__action-button button"
+                />
             </div>
             <div class="product--detail-content__service">
                 <CustomerServiceCompnent />
@@ -123,7 +126,7 @@ export default {
 <style lang="scss">
 @import '@/assets/mixins.scss';
 .product--detail {
-    max-width: 1440px;
+    max-width: var(--main-layout-max-width);
     margin: 0 auto;
     display: grid;
     grid-gap: 50px;
@@ -179,21 +182,24 @@ export default {
             border-radius: 2px;
             padding: 3px 7px;
         }
-        &__action button {
-            @include flex-container($align: center, $justify: center);
-            @include buttonPrimary();
-            font-size: var(--font-l);
-            padding: 9px 12px;
-            margin-top: 25px;
+        &__action {
             width: 100%;
-            &::after {
-                content: '';
-                background-image: url('../assets/images/cart-add-svgrepo-com-white.svg');
-                display: inline-block;
-                vertical-align: middle;
-                width: 24px;
-                height: 24px;
-                margin-left: 5px;
+            &-button {
+                @include flex-container($align: center, $justify: center);
+                @include buttonPrimary();
+                font-size: var(--font-l);
+                padding: 9px 12px;
+                margin-top: 25px;
+                width: 100%;
+                &::after {
+                    content: '';
+                    background-image: url('../assets/images/cart-add-svgrepo-com-white.svg');
+                    display: inline-block;
+                    vertical-align: middle;
+                    width: 24px;
+                    height: 24px;
+                    margin-left: 5px;
+                }
             }
         }
         &__service {
