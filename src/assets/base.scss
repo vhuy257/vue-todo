@@ -78,9 +78,10 @@ body {
 }
 
 input {
-  border: 1px solid var(--vt-c-divider-dark-2);
+  border: none;
   padding: 10px;
-  border-radius: 3px;
+  border-radius: 5px;
+  background-color: var(--vt-c-white-soft);
   font-size: var(--font-m);
   font-family: var(--font-custom);
 }

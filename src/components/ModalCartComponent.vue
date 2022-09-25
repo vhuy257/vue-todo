@@ -154,10 +154,11 @@ export default {
     transition: all 0.2s ease-in-out;
     transform: translateY(40px);
     opacity: 0;
-
+    visibility: hidden;
     &.active {
         transform: translateY(0);
         opacity: 1;
+        visibility: visible;
     }
 
     &__main {
