@@ -1,10 +1,20 @@
+<script lang="ts">
+import CheckoutSummaryComponentVue from '@/components/CheckoutSummaryComponent.vue';
+import ShippingAddressComponentVue from '@/components/ShippingAddressComponent.vue';
+export default {
+    components: {
+        ShippingAddressComponentVue,
+        CheckoutSummaryComponentVue
+    }
+};
+</script>
 <template>
     <div class="checkout--wrapper-step">
         <div class="checkout--wrapper-step_item">
             <div class="checkout--wrapper-step_item__icon">
                 <img
                     src="../assets/images/shipping-fast-solid-svgrepo-com.svg"
-                    width="40"
+                    width="30"
                 />
             </div>
             <strong>Step 1</strong>
@@ -14,7 +24,7 @@
             <div class="checkout--wrapper-step_item__icon">
                 <img
                     src="../assets/images/credit-card-two-sides-svgrepo-com.svg"
-                    width="40"
+                    width="35"
                 />
             </div>
             <strong>Step 2</strong>
@@ -24,7 +34,7 @@
             <div class="checkout--wrapper-step_item__icon">
                 <img
                     src="../assets/images/checked-svgrepo-com.svg"
-                    width="40"
+                    width="25"
                 />
             </div>
             <strong>Step 3</strong>
@@ -32,9 +42,8 @@
         </div>
     </div>
     <div class="checkout--wrapper-content">
-        <div class="checkout--wrapper-content_shipping__address">
-            <h2>Shipping Address</h2>
-        </div>
+        <ShippingAddressComponentVue />
+        <CheckoutSummaryComponentVue />
     </div>
 </template>
 <style lang="scss">
@@ -74,9 +83,6 @@
                     display: none;
                 }
             }
-            img {
-                width: 25px;
-            }
             strong {
                 font-weight: 500;
                 margin-top: 20px;
@@ -96,6 +102,7 @@
     &-content {
         max-width: var(--main-layout-max-width);
         margin: 20px auto;
+        @include flex-container($align: flex-start);
     }
 }
 </style>
