@@ -157,6 +157,19 @@ export default {
                             $15
                         </span>
                     </li>
+                    <li class="cart-wrapper--content__total-redeemp-coupon">
+                        <span
+                            class="cart-wrapper--content__total-detail--label"
+                        >
+                            Discount coupon code
+                        </span>
+                        <input placeholder="Your coupon code" />
+                        <button
+                            class="cart-wrapper--content__total-redeemp-coupon-button button"
+                        >
+                            Apply coupon code
+                        </button>
+                    </li>
                 </ul>
                 <div class="cart-wrapper--content__total-price">
                     <div class="cart-wrapper--content__total-price-label">
@@ -177,15 +190,6 @@ export default {
                     >
                         Checkout
                     </a>
-                </div>
-                <div class="cart-wrapper--content__total-redeemp-coupon">
-                    <h4>Coupon</h4>
-                    <input placeholder="Your coupon code" />
-                    <button
-                        class="cart-wrapper--content__total-redeemp-coupon-button button"
-                    >
-                        Apply
-                    </button>
                 </div>
                 <PaymentMethodsComponent />
             </div>
