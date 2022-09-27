@@ -77,13 +77,30 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-input {
-  border: none;
-  padding: 10px;
-  border-radius: 5px;
-  background-color: var(--vt-c-white-soft);
-  font-size: var(--font-m);
-  font-family: var(--font-custom);
+input,
+select {
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: var(--vt-c-white-soft);
+    font-size: var(--font-m);
+    font-family: var(--font-custom);
+    outline: none;
+}
+
+select {
+  padding: 10px;  
+  color: var(--vt-c-text-light-2);
+  -webkit-appearance: none;
+  background-image: url('../assets/images/arrow-down-1-svgrepo-com.svg');
+  background-repeat: no-repeat;
+  background-position: 98% center;
+  padding-right: 40px;
+  background-size: 20px;
+  cursor: pointer;
+  &:focus {
+    background-image: url('../assets/images/arrow-up-1-svgrepo-com.svg');
+  }
 }
 
 input:focus {
@@ -145,5 +162,10 @@ button,
     background: none;
     color: var(--vt-c-black);
     border: 2px solid var(--button-main-background-color);
+  }
+
+  &[disabled] {
+    opacity: .5;
+    cursor: not-allowed;
   }
 }

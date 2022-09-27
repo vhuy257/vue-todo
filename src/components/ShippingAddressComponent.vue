@@ -1,3 +1,22 @@
+<script lang="ts">
+import InputComponentVue from './Input/InputComponent.vue';
+import SelectComponentVue from './Select/SelectComponent.vue';
+import { useAddressStore } from '@/stores/address';
+export default {
+    setup() {
+        const useAddress = useAddressStore();
+        const shippingAddressForm = useAddress.addressForm;
+
+        return {
+            shippingAddressForm
+        };
+    },
+    components: {
+        InputComponentVue,
+        SelectComponentVue
+    }
+};
+</script>
 <template>
     <div class="checkout--wrapper-content_shipping__address">
         <div class="checkout--wrapper-content_shipping__address-header">
@@ -8,39 +27,24 @@
         </div>
         <div class="checkout--wrapper-content_shipping__address-form">
             <div
-                class="checkout--wrapper-content_shipping__address-form_input firstname"
+                v-for="item in shippingAddressForm"
+                :key="item"
+                :class="item.name"
             >
-                <input placeholder="First Name" />
-            </div>
-            <div
-                class="checkout--wrapper-content_shipping__address-form_input lastname"
-            >
-                <input placeholder="Last Name" />
-            </div>
-            <div class="checkout--wrapper-content_shipping__address-form_input">
-                <input placeholder="Vat Number" />
-            </div>
-            <div class="checkout--wrapper-content_shipping__address-form_input">
-                <input placeholder="Phone Number" />
-            </div>
-            <div class="checkout--wrapper-content_shipping__address-form_input">
-                <input placeholder="Street Address" />
-            </div>
-            <div class="checkout--wrapper-content_shipping__address-form_input">
-                <input placeholder="Street Address" />
-            </div>
-            <div class="checkout--wrapper-content_shipping__address-form_input">
-                <input placeholder="Street Address" />
-            </div>
-            <div class="checkout--wrapper-content_shipping__address-form_input">
-                <input placeholder="City" />
-            </div>
-            <div class="checkout--wrapper-content_shipping__address-form_input">
-                <input placeholder="Zip/Postal Code" />
+                <InputComponentVue
+                    v-if="item.type == 'input'"
+                    :label="item.label"
+                    :value="item.value"
+                />
+                <SelectComponentVue
+                    v-if="item.type == 'select'"
+                    :name="item.name"
+                    :label="item.label"
+                />
             </div>
         </div>
         <div class="checkout--wrapper-content_shipping__address-form_actions">
-            <button>Save address</button>
+            <button :disabled="true">Save address</button>
         </div>
     </div>
 </template>
@@ -57,7 +61,7 @@
         }
         &-form {
             max-width: 700px;
-            margin-top: 10px;
+            margin-top: 20px;
             @include flex-container($align: center);
             &_input {
                 margin: 10px 0;
@@ -75,6 +79,9 @@
                 button {
                     @include buttonPrimary();
                 }
+            }
+            .street {
+                width: 100%;
             }
         }
     }
