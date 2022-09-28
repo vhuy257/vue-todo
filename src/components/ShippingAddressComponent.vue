@@ -8,6 +8,7 @@ export default {
         const shippingAddressForm = useAddress.addressForm;
 
         return {
+            useAddress,
             shippingAddressForm
         };
     },
@@ -35,16 +36,21 @@ export default {
                     v-if="item.type == 'input'"
                     :label="item.label"
                     :value="item.value"
+                    :name="item.name"
+                    :errorList="item.errorList"
                 />
                 <SelectComponentVue
                     v-if="item.type == 'select'"
+                    :listValue="item.listValue"
+                    :errorList="item.errorList"
                     :name="item.name"
+                    :value="item.value"
                     :label="item.label"
                 />
             </div>
         </div>
         <div class="checkout--wrapper-content_shipping__address-form_actions">
-            <button :disabled="true">Save address</button>
+            <button @click="useAddress.saveFormAddress">Save address</button>
         </div>
     </div>
 </template>
@@ -61,7 +67,6 @@ export default {
         }
         &-form {
             max-width: 700px;
-            margin-top: 20px;
             @include flex-container($align: center);
             &_input {
                 margin: 10px 0;
@@ -75,12 +80,12 @@ export default {
                 width: 100%;
             }
             &_actions {
-                margin-top: 20px;
+                margin-top: 40px;
                 button {
                     @include buttonPrimary();
                 }
             }
-            .street {
+            [class^='streetaddress'] {
                 width: 100%;
             }
         }

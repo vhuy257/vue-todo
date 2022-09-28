@@ -1,4 +1,6 @@
 import { defineStore } from 'pinia';
+import { requiredFieldError } from '@/config/error';
+import allCountries from '@/config/config';
 
 export const useAddressStore = defineStore({
     id: 'address',
@@ -6,58 +8,94 @@ export const useAddressStore = defineStore({
         addressForm: [
             {
                 type: 'input',
+                name: 'firstname',
                 label: 'First Name',
-                value: ''
+                value: '',
+                errorList: [] as string[]
             },
             {
                 type: 'input',
+                name: 'lastname',
                 label: 'Last Name',
-                value: ''
+                value: '',
+                errorList: [] as string[]
             },
             {
                 type: 'input',
+                name: 'vatnumber',
                 label: 'VAT Number',
-                value: ''
+                value: '',
+                errorList: [] as string[]
             },
             {
                 type: 'input',
+                name: 'phonenumber',
                 label: 'Phone Number',
-                value: ''
+                value: '',
+                errorList: [] as string[]
             },
             {
                 type: 'select',
+                name: 'country',
                 label: 'Country',
-                value: ''
+                listValue: allCountries as string[],
+                value: 'Select your country',
+                errorList: [] as string[]
             },
             {
                 type: 'input',
+                name: 'zippostalcode',
                 label: 'Zip/Postal Code',
-                value: ''
+                value: '',
+                errorList: [] as string[]
             },
             {
                 type: 'input',
+                name: 'streetaddress1',
                 label: 'Street Address',
                 value: '',
-                name: 'street'
+                errorList: [] as string[]
             },
             {
                 type: 'input',
+                name: 'streetaddress2',
                 label: 'Street Address',
                 value: '',
-                name: 'street'
+                errorList: [] as string[]
             },
             {
                 type: 'input',
+                name: 'streetaddress3',
                 label: 'Street Address',
                 value: '',
-                name: 'street'
+                errorList: [] as string[]
             }
-        ]
+        ],
+        shippingAdress: {}
     }),
     actions: {
-        updateValueInput(val: string) {
-            this.addressForm[0].value = val;
-            console.log(val, this.addressForm);
+        checkFormValid() {
+            this.addressForm.map((item) => {
+                if (item.value == '' || item.value == 'Select your country') {
+                    !item.errorList.includes(requiredFieldError) &&
+                        item.errorList.push(requiredFieldError);
+                } else {
+                    item.errorList = item.errorList.filter(
+                        (item) => item !== requiredFieldError
+                    );
+                }
+            });
+        },
+        updateValueInput(name: string, val: string) {
+            this.addressForm.map((item) => {
+                if (item.name == name) {
+                    item.value = val;
+                }
+            });
+            this.checkFormValid();
+        },
+        saveFormAddress() {
+            this.checkFormValid();
         }
     }
 });

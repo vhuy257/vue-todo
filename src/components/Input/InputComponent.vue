@@ -1,31 +1,28 @@
 <!-- eslint-disable vue/no-mutating-props -->
 <script lang="ts">
 import { useAddressStore } from '@/stores/address';
-
+import InputErrorComponent from './InputErrorComponent.vue';
 export default {
-    props: ['label', 'name', 'error', 'value'],
+    props: ['label', 'className', 'errorList', 'value', 'name'],
     methods: {
-        onChange(val: string) {
+        onChange(name: string, val: string) {
             const useAddress = useAddressStore();
-            useAddress.updateValueInput(val);
+            useAddress.updateValueInput(name, val);
         }
-    }
+    },
+    components: { InputErrorComponent }
 };
 </script>
 <template>
-    <div class="input--field" :class="name">
-        <div class="input--field-label">{{ label }} {{ value }}</div>
+    <div class="input--field" :class="{ invalid: errorList.length > 0 }">
+        <div class="input--field-label">{{ label }}</div>
         <input
             class="input--field-input"
             type="text"
             v-model="value"
-            v-on:change="onChange(value)"
+            v-on:change="onChange(name, value)"
         />
-        <div class="input--field-error" v-if="error">
-            <span v-if="error">
-                {{ error }}
-            </span>
-        </div>
+        <InputErrorComponent :error="errorList" />
     </div>
 </template>
 <style lang="scss" scoped>
@@ -35,6 +32,8 @@ export default {
     &-label {
         font-size: 14px;
         margin-bottom: 5px;
+        color: #555;
+        font-weight: 500;
     }
     input {
         width: 100%;
@@ -42,12 +41,10 @@ export default {
     &.street {
         width: 100%;
     }
-    &-error {
-        position: absolute;
-        bottom: -25px;
-        font-size: 12px;
-        margin-top: 10px;
-        color: var(--color-red);
+    &.invalid {
+        input {
+            background-color: var(--background-input-invalid);
+        }
     }
 }
 </style>
