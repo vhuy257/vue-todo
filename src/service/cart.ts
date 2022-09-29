@@ -1,15 +1,9 @@
 import type { Product } from '@/model/product';
-
-export const getLocalStorage = () => {
-    return JSON.parse(localStorage.getItem('cart') as string) || [];
-};
-
-export const setLocalStorage = (db: Product[]) => {
-    localStorage.setItem('cart', JSON.stringify(db));
-};
+import { getLocalStorage, setLocalStorage } from './db';
+const dbName = 'cart';
 
 export const addProductToCart = (product: Product) => {
-    const db = getLocalStorage();
+    const db = getLocalStorage(dbName);
     const checkDuplicate = db.findIndex(
         (item: Product) => item.id === product.id
     );
@@ -17,24 +11,24 @@ export const addProductToCart = (product: Product) => {
     if (checkDuplicate === -1) {
         const updateQtyProduct = { ...product, qty: product.qty };
         const newDb = [...db, updateQtyProduct];
-        setLocalStorage(newDb);
+        setLocalStorage(dbName, newDb);
     } else {
         const newDb = db;
         newDb[checkDuplicate].qty += product.qty;
-        setLocalStorage(newDb);
+        setLocalStorage(dbName, newDb);
     }
 };
 
 export const getProductsFromCart = () => {
-    return getLocalStorage();
+    return getLocalStorage(dbName);
 };
 
 export const removeItemFromCart = (product: Product) => {
-    const db = getLocalStorage();
+    const db = getLocalStorage(dbName);
     const newDb = db.filter((item: Product) => item.id !== product.id);
-    setLocalStorage(newDb);
+    setLocalStorage(dbName, newDb);
 };
 
 export const updateCartItems = (cart: Product[]) => {
-    return setLocalStorage(cart);
+    return setLocalStorage(dbName, cart);
 };

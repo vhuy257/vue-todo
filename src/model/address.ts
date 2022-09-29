@@ -1,8 +1,8 @@
 export interface Address {
     firstname?: string;
     lastname?: string;
-    vatnumber?: number;
-    phonenumber?: number;
-    zipcode?: number;
-    streetAddress: string;
+    vatnumber?: string;
+    phonenumber?: string;
+    zipcode?: string;
+    streetAddress?: string;
 }

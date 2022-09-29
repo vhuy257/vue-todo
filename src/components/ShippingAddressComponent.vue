@@ -88,6 +88,13 @@ export default {
             [class^='streetaddress'] {
                 width: 100%;
             }
+            .firstname,
+            .lastname {
+                width: 48%;
+            }
+            .vatnumber {
+                width: 100%;
+            }
         }
     }
 }

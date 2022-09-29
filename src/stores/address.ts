@@ -1,6 +1,8 @@
 import { defineStore } from 'pinia';
 import { requiredFieldError } from '@/config/error';
 import allCountries from '@/config/config';
+import type { Address } from '@/model/address';
+import { saveAddress } from '@/service/address';
 
 export const useAddressStore = defineStore({
     id: 'address',
@@ -55,20 +57,6 @@ export const useAddressStore = defineStore({
                 label: 'Street Address',
                 value: '',
                 errorList: [] as string[]
-            },
-            {
-                type: 'input',
-                name: 'streetaddress2',
-                label: 'Street Address',
-                value: '',
-                errorList: [] as string[]
-            },
-            {
-                type: 'input',
-                name: 'streetaddress3',
-                label: 'Street Address',
-                value: '',
-                errorList: [] as string[]
             }
         ],
         shippingAdress: {}
@@ -76,7 +64,10 @@ export const useAddressStore = defineStore({
     actions: {
         checkFormValid() {
             this.addressForm.map((item) => {
-                if (item.value == '' || item.value == 'Select your country') {
+                const check =
+                    item.value == '' || item.value == 'Select your country';
+
+                if (check) {
                     !item.errorList.includes(requiredFieldError) &&
                         item.errorList.push(requiredFieldError);
                 } else {
@@ -84,6 +75,8 @@ export const useAddressStore = defineStore({
                         (item) => item !== requiredFieldError
                     );
                 }
+
+                return check;
             });
         },
         updateValueInput(name: string, val: string) {
@@ -96,6 +89,17 @@ export const useAddressStore = defineStore({
         },
         saveFormAddress() {
             this.checkFormValid();
+
+            const addressData = {
+                firstname: this.addressForm[0].value,
+                lastname: this.addressForm[1].value,
+                vatnumber: this.addressForm[2].value,
+                phonenumber: this.addressForm[3].value,
+                zipcode: this.addressForm[5].value,
+                streetaddress: this.addressForm[6].value
+            };
+
+            saveAddress(addressData);
         }
     }
 });
