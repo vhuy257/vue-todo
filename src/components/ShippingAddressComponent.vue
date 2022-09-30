@@ -6,7 +6,7 @@ export default {
     setup() {
         const useAddress = useAddressStore();
         const shippingAddressForm = useAddress.addressForm;
-
+        useAddress.getAddressData();
         return {
             useAddress,
             shippingAddressForm
@@ -26,7 +26,10 @@ export default {
                 Add New Address
             </button>
         </div>
-        <div class="checkout--wrapper-content_shipping__address-form">
+        <div
+            class="checkout--wrapper-content_shipping__address-form"
+            v-if="!Object.keys(useAddress.shippingAdress).length"
+        >
             <div
                 v-for="item in shippingAddressForm"
                 :key="item"
@@ -49,7 +52,25 @@ export default {
                 />
             </div>
         </div>
-        <div class="checkout--wrapper-content_shipping__address-form_actions">
+        <div
+            class="checkout--wrapper-content_shipping__address-data"
+            v-if="Object.keys(useAddress.shippingAdress).length"
+        >
+            <div class="checkout--wrapper-content_shipping__address-data_item">
+                <p>
+                    {{ useAddress.shippingAdress.firstname }}
+                    {{ useAddress.shippingAdress.lastname }}
+                </p>
+                <p>{{ useAddress.shippingAdress.vatnumber }}</p>
+                <p>{{ useAddress.shippingAdress.phonenumber }}</p>
+                <p>{{ useAddress.shippingAdress.zipcode }}</p>
+                <p>{{ useAddress.shippingAdress.streetaddress }}</p>
+            </div>
+        </div>
+        <div
+            class="checkout--wrapper-content_shipping__address-form_actions"
+            v-if="!Object.keys(useAddress.shippingAdress).length"
+        >
             <button @click="useAddress.saveFormAddress">Save address</button>
         </div>
     </div>
@@ -58,6 +79,7 @@ export default {
 @import '@/assets/mixins.scss';
 .checkout--wrapper-content {
     &_shipping__address {
+        width: 750px;
         &-header {
             @include flex-container($align: center);
             button {
@@ -65,8 +87,20 @@ export default {
                 padding: 5px 7px;
             }
         }
+        &-data {
+            margin-top: 40px;
+            &_item {
+                max-width: 250px;
+                border: 1px solid green;
+                padding: 10px 15px;
+                border-radius: 5px;
+                font-size: 14px;
+                p {
+                    margin: 5px 0;
+                }
+            }
+        }
         &-form {
-            max-width: 700px;
             @include flex-container($align: center);
             &_input {
                 margin: 10px 0;

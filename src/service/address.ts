@@ -4,9 +4,9 @@ import type { Address } from '@/model/address';
 const dbName = 'orderAddress';
 
 export const getAddress = () => {
-    getLocalStorage(dbName);
+    return getLocalStorage(dbName);
 };
 
 export const saveAddress = (address: Address) => {
-    setLocalStorage(dbName, address);
+    return setLocalStorage(dbName, address);
 };

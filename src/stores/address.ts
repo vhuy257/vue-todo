@@ -1,8 +1,7 @@
 import { defineStore } from 'pinia';
 import { requiredFieldError } from '@/config/error';
 import allCountries from '@/config/config';
-import type { Address } from '@/model/address';
-import { saveAddress } from '@/service/address';
+import { saveAddress, getAddress } from '@/service/address';
 
 export const useAddressStore = defineStore({
     id: 'address',
@@ -100,6 +99,10 @@ export const useAddressStore = defineStore({
             };
 
             saveAddress(addressData);
+            this.getAddressData();
+        },
+        getAddressData() {
+            this.shippingAdress = getAddress();
         }
     }
 });
