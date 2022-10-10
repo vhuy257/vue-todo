@@ -1,11 +1,14 @@
 <script lang="ts">
 import CheckoutSummaryComponentVue from '@/components/CheckoutSummaryComponent.vue';
 import ShippingAddressComponentVue from '@/components/ShippingAddressComponent.vue';
-import CheckoutPaymentsMethods from '../components/CheckoutPaymentsMethods.vue';
+import CheckoutPaymentsMethods from '@/components/CheckoutPaymentsMethods.vue';
+import ShippingMethodsComponent from '@/components/ShippingMethodsComponent.vue';
+
 export default {
     components: {
         ShippingAddressComponentVue,
         CheckoutSummaryComponentVue,
+        ShippingMethodsComponent,
         CheckoutPaymentsMethods
     }
 };
@@ -46,6 +49,7 @@ export default {
     <div class="checkout--wrapper-content">
         <div class="checkout--wrapper-content_left--column">
             <ShippingAddressComponentVue />
+            <ShippingMethodsComponent />
             <CheckoutPaymentsMethods />
         </div>
         <div class="checkout--wrapper-content_right--column">
