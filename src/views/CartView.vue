@@ -255,6 +255,7 @@ export default {
                             $align: center,
                             $justify: flex-start
                         );
+                        margin-top: 10px;
                         &-price {
                             margin-left: 20px;
                             color: var(--color-red);
@@ -321,6 +322,12 @@ export default {
                 li {
                     @include flex-container($align: center);
                     margin: 5px 0;
+                    &.cart-wrapper--content__total-redeemp-coupon {
+                        margin-top: 20px;
+                        input {
+                            margin: 10px 0;
+                        }
+                    }
                 }
                 &--label {
                     font-weight: 500;
